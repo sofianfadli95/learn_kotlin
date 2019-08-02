@@ -1,0 +1,11 @@
+Project-level build.gradle(<project>/build.gradle) :
+classpath 'com.google.gms:google-services:4.0.1'
+
+App-level build.gradle(<project>/<app-module>/build.gradle) :
+implementation 'com.google.firebase:firebase-core:16.0.1'
+
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
+
+// Adding on the AndroidManifest.xml :
+<uses-permission android:name="android.permission.INTERNET"/>

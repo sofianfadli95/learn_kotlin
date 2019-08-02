@@ -1,0 +1,10 @@
+https://medium.com/@SerhiiChaban/dependencies-management-with-gradle-9f9d78a4e2b9
+
+Remove included dependencies and replace them with one package with latest number :
+
+Adding to the build.gradle (Module:app) :
+
+configurations {
+all*.exclude module: ‘appcompat-v7’
+all*.exclude module: ‘support-v4’
+}

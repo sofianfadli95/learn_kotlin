@@ -1,0 +1,19 @@
+The issue can be caused by many factors,
+
+as mentioned by martomstom in this Answer the issue is sometimes caused by com.android.tools.build:gradle version, changing it's version to a more stable one would solve the problem: for example: com.android.tools.build:gradle:3.4.0-alpha02 with com.android.tools.build:gradle:3.2.1
+Also, having libraries from the same group, but with different versions may cause the problem or even more runtime errors. use the exclude group method like the following : implementation('com.squareup.picasso:picasso:2.71828') { exclude(group: 'com.android.support') } in this case, picasso library uses android.support components, the android library version used in picasso is different than the one you're currently using in your app, so in order to solve this issue, we have to exclude it completely from its sub library and class groups.
+
+It can also happen by the mismatch of resources and code, including this importation line in your activity may solve the problem too : import com.package.name.R
+
+Sometimes it can happen because of the IDE, performances or memory.. Cleaning the project from time to time may save you some time, on Android Studio it would be something like this : Build -> Clean Project / Rebuild Project - Cleaning IDE cash also helps with performance and memory, on Android Studio it would look like this : File-> Invalidate Chases/ Restart -> Invalidate Cashes and Restart
+I noticed that this problem happens to me the most of the time when importing new resources, Using prohibited characters in their names would fire the error, such as . , , - , UpperCase or special Letters
+And as a suggestion , if you're using Kotlin, i really recommend using Kotlin extensions in your activity such as : import kotlinx.android.synthetic.main.activity_page.* or if you're using a custom view : kotlinx.android.synthetic.main.view_layout.view.* after that, in onCreat() method of an activity , you'll only have to call the id, for example : my_edit_text_ID.text = "Kotlin Dbest!", or from a custom view : mCostumView.my_edit_text_ID.text = "Kotlin Dbest!"
+EDIT :
+
+I have faced this issue againe and the problem was the '' R '' library was imported from 2 different sources :
+
+com.android.R
+
+com.example.package.R
+
+You must only import the '' R '' library with your application package name, in this case com.example.package.R Sometimes the library is not imported at all, to import it, click on the unresolved reference R and press Alt + Enter

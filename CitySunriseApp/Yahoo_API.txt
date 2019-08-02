@@ -1,0 +1,3 @@
+App ID : 7B1QFR42
+Client ID (Consumer Key) : dj0yJmk9bHhZa0JUWndxSVZiJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTAy
+Client Secret (Consumer Secret) : 1e5187377a4e759e4dba220b42f717e0869cef56
